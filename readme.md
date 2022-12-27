@@ -31,9 +31,9 @@ Instala o Dotenv, que permite criar um arquivo com variáveis secretas.
 
 Para funcionar, é preciso criar estes scripts em package.json:
 
-#### `"dev": "nodemon -r dotenv/config server.js dotenv_config_path=.env"`
+> `"dev": "nodemon -r dotenv/config server.js dotenv_config_path=.env"`
 
-#### `"start": "node -r dotenv/config server.js dotenv_config_path=.env"`
+> `"start": "node -r dotenv/config server.js dotenv_config_path=.env"`
 
 ### `npm install bcryptjs`
 
