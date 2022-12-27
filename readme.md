@@ -4,6 +4,8 @@ Backend do projeto [To Do List (React)](https://github.com/alanlucascruz/react-t
 
 Projeto para o curso Fullstack Class (Avance Dev).
 
+---
+
 ## Iniciar o Projeto
 
 ### `npm init`
@@ -50,6 +52,8 @@ Instala todas as dependências do projeto.
 As dependências do projeto estão no arquivo package.json.
 
 Esse comando é útil quando o projeto não tem a pasta node_modules.
+
+---
 
 ## Scripts para Executar o Projeto
 
