@@ -1,4 +1,4 @@
-# To Do List (Backend)
+## To Do List (Backend)
 
 Backend do projeto [To Do List (React)](https://github.com/alanlucascruz/react-to-do-list).
 
@@ -11,6 +11,8 @@ Projeto para o curso Fullstack Class (Avance Dev).
 ### `npm init`
 
 Cria o arquivo package.json.
+
+---
 
 ## Scripts para Instalação de Pacotes
 
