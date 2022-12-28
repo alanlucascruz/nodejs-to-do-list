@@ -1,12 +1,17 @@
 const routes = require("express").Router();
+const {
+  index,
+  show,
+  store,
+  update,
+  destroy,
+} = require("../controllers/CategoryController");
 
-routes.get("/", (req, res) => {
-  res.json({});
-});
-routes.get("/find/:filter", (req, res) => {});
-routes.get("/:id", (req, res) => {});
-routes.post("/", (req, res) => {});
-routes.put("/:id", (req, res) => {});
-routes.delete("/:id", (req, res) => {});
+routes.get("/", index);
+routes.get("/find/:filter", index);
+routes.get("/:id", show);
+routes.post("/", store);
+routes.put("/:id", update);
+routes.delete("/:id", destroy);
 
 module.exports = routes;
