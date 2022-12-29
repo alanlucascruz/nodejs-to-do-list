@@ -65,27 +65,4 @@ const signUp = async (req, res) => {
   }
 };
 
-const updatePassword = async (req, res) => {
-  try {
-    const { old_password, new_password } = req.body;
-    const { _id } = req.user;
-
-    const user = await User.findById(_id);
-
-    const match = await bcrypt.compare(old_password, user.password);
-
-    if (!match) {
-      return res.status(401).json({ message: "A antiga senha não confere." });
-    }
-
-    const encryptedNewPassword = await bcrypt.hash(new_password, 10);
-
-    await User.updateOne({ _id }, { password: encryptedNewPassword });
-
-    res.json({ message: "Senha alterada com sucesso." });
-  } catch (error) {
-    res.status(400).json({ message: "Erro ao alterar a senha.", error });
-  }
-};
-
-module.exports = { signIn, signUp, updatePassword };
+module.exports = { signIn, signUp };
