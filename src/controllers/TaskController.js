@@ -30,9 +30,13 @@ const show = async (req, res) => {
 
 const store = async (req, res) => {
   try {
-    const data = await Task.create(req.body);
+    const userId = req.user._id;
 
-    const populatedData = await Task.findById(data._id).populate("category");
+    const data = { ...req.body, user: userId };
+
+    const newData = await Task.create(data);
+
+    const populatedData = await Task.findById(newData._id).populate("category");
 
     res.status(201).json(populatedData);
   } catch (error) {
@@ -43,7 +47,9 @@ const store = async (req, res) => {
 const update = async (req, res) => {
   try {
     const { id } = req.params;
-    const data = req.body;
+    const userId = req.user._id;
+
+    const data = { ...req.body, user: userId };
 
     const newData = await Task.findByIdAndUpdate(id, data).populate("category");
 

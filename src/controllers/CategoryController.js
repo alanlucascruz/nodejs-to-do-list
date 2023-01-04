@@ -28,9 +28,13 @@ const show = async (req, res) => {
 
 const store = async (req, res) => {
   try {
-    const data = await Category.create(req.body);
+    const userId = req.user._id;
 
-    res.status(201).json(data);
+    const data = { ...req.body, user: userId };
+
+    const newData = await Category.create(data);
+
+    res.status(201).json(newData);
   } catch (error) {
     res.status(400).json({ message: "Erro ao cadastrar a categoria.", error });
   }
@@ -39,7 +43,9 @@ const store = async (req, res) => {
 const update = async (req, res) => {
   try {
     const { id } = req.params;
-    const data = req.body;
+    const userId = req.user._id;
+
+    const data = { ...req.body, user: userId };
 
     await Category.findByIdAndUpdate(id, data);
 
