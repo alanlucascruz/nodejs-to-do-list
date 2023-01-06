@@ -47,9 +47,9 @@ const update = async (req, res) => {
 
     const data = { ...req.body, user: userId };
 
-    await Category.findByIdAndUpdate(id, data);
+    const newData = await Category.findByIdAndUpdate(id, data, { new: true });
 
-    res.json(data);
+    res.json(newData);
   } catch (error) {
     res.status(400).json({ message: "Erro ao atualizar a categoria", error });
   }

@@ -51,7 +51,9 @@ const update = async (req, res) => {
 
     const data = { ...req.body, user: userId };
 
-    const newData = await Task.findByIdAndUpdate(id, data).populate("category");
+    const newData = await Task.findByIdAndUpdate(id, data, {
+      new: true,
+    }).populate("category");
 
     res.json(newData);
   } catch (error) {
