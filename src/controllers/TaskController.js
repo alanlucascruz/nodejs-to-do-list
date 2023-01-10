@@ -10,7 +10,7 @@ const index = async (req, res) => {
       description: new RegExp(filter, "i"),
     })
       .populate("category")
-      .sort("-created_at");
+      .sort({ createdAt: -1 });
 
     res.json(data);
   } catch (error) {
