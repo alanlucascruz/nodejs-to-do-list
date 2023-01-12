@@ -8,7 +8,9 @@ const dailyProductivity = async (req, res) => {
   const userId = req.user._id;
 
   const start = new Date();
-  start.setDate(start.getDate() - 30);
+  start.setDate(start.getDate() - 20);
+  start.setUTCHours(0, 0, 0, 0);
+
   const end = new Date();
 
   const data = await Task.aggregate()
@@ -25,7 +27,21 @@ const dailyProductivity = async (req, res) => {
     })
     .sort("_id");
 
-  res.json(data);
+  const dataFormatted = [];
+
+  for (let date = start; date < end; date.setDate(date.getDate() + 1)) {
+    const index = data.findIndex(
+      (item) => item._id.getTime() == date.getTime()
+    );
+
+    if (index === -1) {
+      dataFormatted.push({ _id: new Date(date), count: 0 });
+    } else {
+      dataFormatted.push(data[index]);
+    }
+  }
+
+  res.json(dataFormatted);
 };
 
 const categoryProgress = async (req, res) => {
