@@ -31,7 +31,7 @@ const dailyProductivity = async (req, res) => {
 
   for (let date = start; date < end; date.setDate(date.getDate() + 1)) {
     const index = data.findIndex(
-      (item) => item._id.getTime() == date.getTime()
+      (item) => item._id.getTime() === date.getTime()
     );
 
     if (index === -1) {
@@ -52,7 +52,7 @@ const categoryProgress = async (req, res) => {
 
   const data = [];
 
-  categories.forEach(async (category) => {
+  categories.forEach((category) => {
     const totalTasks = tasks.filter((task) =>
       task.category.equals(category._id)
     ).length;
